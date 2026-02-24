@@ -1,0 +1,12 @@
+/* App-specific overrides only – core styling from z-core/core.css */
+
+.dashboard {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+}
+
+.chart-container {
+    flex: 1;
+    min-width: 0;
+}
