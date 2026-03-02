@@ -6,6 +6,13 @@
                 "value": 4.95,
                 "unit": "grams"
             }
-        }
+        },
+        {
+            "date": "2025-03-02",
+            "weight": {
+                "value": 5.92,
+                "unit": "grams"
+            }
+        }        
     ]
 }
