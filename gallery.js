@@ -87,9 +87,11 @@ function renderGallery() {
             card.className = 'gallery-card';
 
             const src = `img/${session.date}/${img.file}`;
+            const thumbBase = img.file.replace(/\.[^.]+$/, '.jpg');
+            const thumbSrc = `img/${session.date}/thumbs/${thumbBase}`;
 
             const image = document.createElement('img');
-            image.src = src;
+            image.src = thumbSrc;
             image.alt = img.caption;
             image.loading = 'lazy';
             image.style.cursor = 'pointer';
