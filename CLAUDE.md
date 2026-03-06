@@ -1,5 +1,13 @@
 # Hot Wheels Project Rules
 
+## HTML Pages
+
+**RULE: Every new HTML page must include the favicon link in the `<head>`.**
+
+```html
+<link rel="icon" href="favicon.ico">
+```
+
 ## Image Thumbnails
 
 **RULE: Every time new images are added to `img/`, generate thumbnails before committing.**
