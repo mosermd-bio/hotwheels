@@ -29,12 +29,12 @@ const galleryData = [
             {
                 file: "length-dorsal.png",
                 figure: 5,
-                caption: "Dorsal view with straight-line carapace length (SCL) measurement along the anterior\u2013posterior axis. SCL = 3.075 cm. Calibrated against scale reference card using ImageJ."
+                caption: "Dorsal view with straight-line carapace length (SCL) measurement along the anterior\u2013posterior axis. SCL = 3.075 cm; body mass = 5.92 g. Calibrated against scale reference card using ImageJ."
             },
             {
                 file: "width-dorsal.png",
                 figure: 6,
-                caption: "Dorsal view with maximum carapace width (SCW) measurement along the lateral axis. SCW = 2.612 cm. Calibrated against scale reference card using ImageJ."
+                caption: "Dorsal view with maximum carapace width (SCW) measurement along the lateral axis. SCW = 2.612 cm; body mass = 5.92 g. Calibrated against scale reference card using ImageJ."
             },
         ]
     }
@@ -55,7 +55,7 @@ function createLightbox() {
 function renderGallery() {
     const container = document.getElementById('gallery');
     const lightbox = createLightbox();
-    let exifVisible = false;
+    let exifVisible = localStorage.getItem('exifVisible') === 'true';
     const exifPanels = [];
 
     // Global EXIF toggle in top-right
@@ -64,9 +64,11 @@ function renderGallery() {
     exifBtn.className = 'exif-toggle';
     exifBtn.title = 'Toggle camera settings for all images';
     exifBtn.textContent = 'EXIF';
+    if (exifVisible) exifBtn.classList.add('active');
     exifBtn.addEventListener('click', (ev) => {
         ev.preventDefault();
         exifVisible = !exifVisible;
+        localStorage.setItem('exifVisible', exifVisible);
         exifBtn.classList.toggle('active', exifVisible);
         exifPanels.forEach(p => p.hidden = !exifVisible);
     });
@@ -114,7 +116,7 @@ function renderGallery() {
             if (img.exif) {
                 const exifPanel = document.createElement('div');
                 exifPanel.className = 'exif-panel';
-                exifPanel.hidden = true;
+                exifPanel.hidden = !exifVisible;
                 const e = img.exif;
                 exifPanel.innerHTML =
                     `<table><tbody>` +
